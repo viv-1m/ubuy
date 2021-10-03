@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section>
+		<hr>
+		<br>
+
+		<form method="post" action="" th:action="@{/offer/search}">
+			<input type="submit" class="btn btn-primary" value="Back" />
+		</form>
+		<br>
+
+		<div>
+			<table id="offerTable" style="width: 100%">
+				<tr>
+					<th>Offer Id</th>
+					<th>Category</th>
+					<th>Posted On</th>
+					<th>Details</th>
+					<th>Points</th>
+					<th>Number of Likes</th>
+				</tr>
+				<tr th:each="offer: ${offers}">
+					<td th:text="${offer.offerId}" />
+					<td th:text="${offer.category}" />
+					<td th:text="${offer.offerDate}" />
+					<td th:text="${offer.details}" />
+					<td th:text="${offer.points}" />
+					<td th:text="${offer.numberOfLikes}" />
+				</tr>
+			</table>
+		</div>
+	</section>
+</body>
+</html>

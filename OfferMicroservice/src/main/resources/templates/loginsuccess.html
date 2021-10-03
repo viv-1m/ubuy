@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section style="height: 100%">
+		<hr>
+		<div style="background-color: white">
+			<br>
+			<div>
+				<div style="float: right">
+					<form method="get" action="" th:action="@{/emp/employees}">
+						<input type="submit" class="btn btn-primary"
+							value="Show Employees" />
+					</form>
+				</div>
+				<br>
+				<form method="get" action="" th:action="@{/offer/addOffer}">
+					<input type="submit" class="btn btn-primary" value="Add new Offer" />
+				</form>
+				<br>
+				<form method="post" action="" th:action="@{/offer/search}">
+					<input type="submit" class="btn btn-primary" value="Search" />
+				</form>
+			</div>
+		</div>
+		<br>
+		<div>
+			<table id="offerTable" style="width: 100%">
+				<tr>
+					<th>Offer Id</th>
+					<th>Category</th>
+					<th>Posted On</th>
+					<th>Details</th>
+					<th>Points</th>
+					<th>Number of Likes</th>
+					<th>Posted By</th>
+					<th>Like this offer</th>
+					<th>Update this offer</th>
+				</tr>
+				<tr th:each="offer: ${offers}">
+					<td th:text="${offer.offerId}" />
+					<td th:text="${offer.category}" />
+					<td th:text="${offer.offerDate}" />
+					<td th:text="${offer.details}" />
+					<td th:text="${offer.points}" />
+					<td th:text="${offer.numberOfLikes}" />
+					<td th:text="${offer.getEmp().empName}" />
+					<td><form action="" th:action="@{/offer/liked}" method="POST">
+							<input type="hidden" th:value="${offer.offerId}" id="offerId"
+								name="offerId"> <input type="submit"
+								value="Like the post" />
+						</form></td>
+					<td><form action="" th:action="@{/offer/updateOffer}"
+							method="POST">
+							<input type="hidden" th:value="${offer.offerId}" id="offerId"
+								name="offerId"> <input type="submit"
+								value="Update the Offer" />
+						</form></td>
+				</tr>
+			</table>
+		</div>
+		<br>
+	</section>
+</body>
+</html>

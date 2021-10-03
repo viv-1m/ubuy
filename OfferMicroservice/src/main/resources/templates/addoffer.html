@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section>
+		<hr>
+		<form method="post" action="" th:action="@{/offer/offers}">
+			<input type="submit" class="btn btn-primary" value="Back" />
+		</form>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8" offset-md-2>
+					<div class="mycard">
+						<h1>Add Offer Details</h1>
+						<form action="" th:action="@{/offer/postedOffer}" method="POST"
+							th:object="${offer}">
+							<div class="mb-3">
+								<label for="category" class="form-label">Category</label> <select
+									class="form-control" id="category" name="category"
+									th:value="${offer.category}" required>
+									<option>Rental</option>
+									<option>Home Appliances</option>
+									<option>Vehicles</option>
+									<option>Electronics</option>
+								</select>
+							</div>
+							<div class="mb-3">
+								<label for="details" class="form-label">Details</label> <input
+									name="details" type="text" class="form-control"
+									th:classappend="${#fields.hasErrors('details') ? 'is-invalid' : ''}"
+									id="details" th:value="${offer.details}" />
+								<div class="invalid-feedback"
+									th:each="e : ${#fields.errors('details')}" th:text="${e}">
+								</div>
+							</div>
+							<div class="mb-3">
+								<label for="numberOfLikes" class="form-label">Number Of
+									Likes</label> <input name="numberOfLikes" type="number"
+									class="form-control"
+									th:classappend="${#fields.hasErrors('numberOfLikes') ? 'is-invalid' : ''}"
+									id="numberOfLikes" required th:value="${offer.numberOfLikes}" />
+								<div class="invalid-feedback"
+									th:each="e : ${#fields.errors('numberOfLikes')}" th:text="${e}">
+								</div>
+							</div>
+							<div class="mb-3">
+								<label for="offerDate" class="form-label">Offer Date</label> <input
+									name="offerDate" type="text" class="form-control"
+									th:classappend="${#fields.hasErrors('offerDate') ? 'is-invalid' : ''}"
+									id="offerDate" required th:value="${offer.offerDate}" /> <br>
+								<div class="invalid-feedback"
+									th:each="e : ${#fields.errors('offerDate')}" th:text="${e}">
+								</div>
+							</div>
+							<div class="mb-3">
+								<label for="empId" class="form-label">Employee Id</label> <input
+									name="empId" type="number" class="form-control" id="empId"
+									required />
+							</div>
+							<br>
+							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="reset" class="btn btn-warning">Reset</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+

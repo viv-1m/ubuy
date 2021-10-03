@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section>
+		<hr>
+		<form method="post" action="" th:action="@{/offer/offers}">
+			<input type="submit" class="btn btn-primary" value="Back" />
+		</form>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8" offset-md-2>
+					<div class="mycard">
+						<h1>Update Offer Details</h1>
+						<form action="" th:action="@{/offer/updatedOffer}" method="POST"
+							th:object="${offers}">
+							<div class="mb-3">
+								<label for="offerId" class="form-label">Offer Id</label> <input
+									name="closeDate" type="number" class="form-control"
+									id="offerId" required th:value="${offer.offerId}" readonly />
+							</div>
+							<div class="mb-3">
+								<label for="category" class="form-label">Category</label> <select
+									class="form-control" id="category" name="category"
+									th:value="${offer.category}" required>
+									<option>Rental</option>
+									<option>Home Appliances</option>
+									<option>Vehicles</option>
+									<option>Electronics</option>
+								</select>
+							</div>
+							<div class="mb-3">
+								<label for="details" class="form-label">Details</label> <input
+									name="details" type="text" class="form-control" id="details"
+									required th:value="${offer.details}" />
+							</div>
+							<div class="mb-3">
+								<label for="offerDate" class="form-label">Offer Date</label> <input
+									name="offerDate" type="text" class="form-control"
+									id="offerDate" required th:value="${offer.offerDate}" />
+							</div>
+							<br>
+
+							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="reset" class="btn btn-warning">Reset</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+

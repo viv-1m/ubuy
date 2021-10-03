@@ -1,0 +1,24 @@
+eureka:
+   instance:
+      hostname: localhost
+ 
+spring:
+   application:
+      name: api-gateway
+   cloud: 
+      gateway:
+         routes:
+         - id: Employee-Service
+           uri: lb://Employee-Service
+           predicates:
+              - Path=/emp/**
+           
+         - id: Offer-Service
+           uri: lb://Offer-Service
+           predicates:
+              - Path=/offer/**
+              
+         - id: LOGIN
+           uri: lb://LOGIN
+           predicates:
+              - Path=/log/**

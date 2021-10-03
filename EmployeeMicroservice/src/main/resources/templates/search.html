@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section>
+		<hr>
+		<form method="post" action="" th:action="@{/emp/employees}">
+			<input type="submit" class="btn btn-primary" value="Back" />
+		</form>
+		<br>
+		<div class="container">
+			<h3>Search By Employee Id</h3>
+			<br>
+			<form action="" th:action="@{/emp/searchById}" method="POST">
+				<div class="form-group">
+					<label for="empId">Employee Id</label> <input type="number"
+						class="form-control" id="empId" name="empId" required>
+				</div>
+				<br> <input type="submit" value="Search By Employee Id"  />
+			</form>
+		</div>
+		<hr>
+		<div class="container">
+			<h3>Search Offers by Employee Id</h3>
+			<br>
+			<form action="" th:action="@{/emp/offerById}" method="POST">
+				<div class="form-group">
+					<label for="empId">Employee Id</label> <input type="number"
+						class="form-control" id="empId" name="empId" required>
+				</div>
+				<br> <input type="submit" value="Search Offers" />
+			</form>
+		</div>
+		<hr>
+		<div class="container">
+			<h3>Search Most Liked Offers of Employees</h3>
+			<br>
+			<form action="" th:action="@{/emp/searchLiked}" method="POST">
+				<div class="form-group">
+					<label for="empId">Employee Id</label> <input type="number"
+						class="form-control" id="empId" name="empId" required>
+				</div>
+				<br> <input type="submit" value="Search Most Liked Offers"  />
+			</form>
+		</div>
+		<hr>
+	</section>
+</body>
+</html>

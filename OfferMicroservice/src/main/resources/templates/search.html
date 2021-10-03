@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section>
+		<br>
+
+		<form method="post" action="" th:action="@{/offer/offers}">
+			<input type="submit" class="btn btn-primary" value="Back" />
+		</form>
+		<br>
+		<div class="container">
+			<h3>Search By Category</h3>
+			<br>
+			<form action="" th:action="@{/offer/searchByCategory}" method="POST">
+				<div class="form-group">
+					<label for="category">Select a Category</label> <select
+						class="form-control" id="category" name="category">
+						<option>Rental</option>
+						<option>Home Appliances</option>
+						<option>Vehicles</option>
+						<option>Electronics</option>
+					</select> <br> <input type="submit" value="Search Category" />
+				</div>
+			</form>
+		</div>
+		<hr>
+		<div class="container">
+			<h3>Search By Offer Id</h3>
+			<br>
+			<form action="" th:action="@{/offer/searchById}" method="POST">
+				<div class="form-group">
+					<label for="offerId">Offer Id</label> <input type="number"
+						class="form-control" id="offerId" name="offerId" required>
+				</div>
+				<br> <input type="submit" value="Search By Offer Id" />
+			</form>
+		</div>
+		<hr>
+		<div class="container">
+			<h3>Search By Offer Date</h3>
+			<br>
+			<form action="" th:action="@{/offer/searchByDate}" method="POST">
+				<div class="form-group">
+					<label for="offerDate">Offer Date</label> <input type="text"
+						class="form-control" id="offerDate" name="offerDate" required>
+				</div>
+				<br> <input type="submit" value="Search By Posted Date" />
+			</form>
+		</div>
+		<hr>
+		<br>
+		<div class="container">
+			<h3>Search The Top 3 Liked Offers</h3>
+			<br>
+			<form action="" th:action="@{/offer/toplikes}">
+				<input type="submit" value="Search for Top 3 Liked Offers" />
+			</form>
+		</div>
+	</section>
+</body>
+</html>

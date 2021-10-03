@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section style="height: 100%">
+		<hr>
+		<br>
+		<div>
+			<form method="post" action="" th:action="@{/offer/offers}">
+				<input type="submit" class="btn btn-primary"
+					value="Go back to Offers" />
+			</form>
+			<br>
+			<form method="post" action="" th:action="@{/emp/search}">
+				<input type="submit" class="btn btn-primary" value="Search" />
+			</form>
+		</div>
+		<br>
+
+		<div>
+			<table id="employeeTable" style="width: 100%">
+				<tr>
+					<th>Employee Id</th>
+					<th>Employee Name</th>
+					<th>Contact</th>
+					<th>Email</th>
+				</tr>
+				<tr th:each="employee: ${employees}">
+					<td th:text="${employee.empId}" />
+					<td th:text="${employee.empName}" />
+					<td th:text="${employee.email}" />
+					<td th:text="${employee.phoneNo}" />
+				</tr>
+			</table>
+		</div>
+	</section>
+</body>
+</html>
